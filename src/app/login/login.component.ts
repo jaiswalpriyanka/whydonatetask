@@ -29,20 +29,18 @@ export class LoginComponent implements OnInit {
 
      this.apiSvc.userLogin(this.apiCon.APIConfig.LOGIN,values).subscribe({
       next:(res) => {
-        debugger
+
         if (res.response == true) {
           let Name = res.data.first_name + " " + res.data.last_name
-          this.tokenStorage.saveToken(res.data.token);
-          this.router.navigate(['/login'])
-          // this.router.navigateByUrl('dashboard');
-          // this.router.navigate(['/dashboard']);
-          // this.router.navigateByUrl('/dashboard');
-          // .then(() => {
-          //   window.location.reload();
-          //   });
-        } else {
-          console.log(res?.message?res.message:'Unknown Error');
+          this.tokenStorage.saveToken(res.data.accessToken);
+          alert(res.message);
+          this.router.navigate(['dashboard']);
+          this.router.navigateByUrl('dashboard');
 
+
+        } else {
+          alert(res?.message?res.message:'Unknown Error');
+          console.log(res?.message?res.message:'Unknown Error');
         }
       },
       error:(err) => {
@@ -57,7 +55,6 @@ export class LoginComponent implements OnInit {
   clear(){
     this.email ="";
     this.password = "";
-    this.show = true;
     }
 
 }
