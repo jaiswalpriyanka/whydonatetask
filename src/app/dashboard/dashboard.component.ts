@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenStorageService } from '../services/token-storage.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  token :any;
 
-  constructor() { }
+  constructor( private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
+    this.token = this.tokenStorage.getToken();
+
+
   }
 
 }

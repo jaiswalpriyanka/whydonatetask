@@ -17,4 +17,10 @@ export class TokenStorageService {
 
   };
   public getToken(): any {  return localStorage.getItem(TOKEN_KEY); }
+
+  signOut() {
+
+    localStorage.removeItem(TOKEN_KEY);
+
+  }
 }

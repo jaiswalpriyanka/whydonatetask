@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row *ngIf="!this.token">
+    <!--  <span>HOME</span> -->
+     <span><a mat-button style="color: #fff ;" href="/">HOME</a></span>
+     <span class="spacer"></span>
+     <a mat-button routerLink="/register">Register</a>
+     <a mat-button routerLink="/login">Login</a>
+  </mat-toolbar-row>
+  <mat-toolbar-row *ngIf="this.token">
+    <!--  <span>HOME</span> -->
+     <span><a mat-button style="color: #fff ;" href="/">HOME</a></span>
+     <span class="spacer"></span>
+
+     <a mat-button (click)="Logout()">Logout</a>
+  </mat-toolbar-row>
+
+
+
+</mat-toolbar>
