@@ -17,11 +17,16 @@ export class LoginComponent implements OnInit {
   email : string ="";
   password : string ="";
   show: boolean= false;
+  validPattern:any;
 
   constructor(private formBuilder: FormBuilder,private router: Router, private tokenStorage: TokenStorageService,private apiSvc: ApiService, private apiCon: ConstantService, ) {
+    this.validPattern = "^[a-z]$";
     this.submitForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['',[ Validators.required,Validators.minLength(6),Validators.maxLength(40)]]
+      password: ['',[ Validators.required,Validators.minLength(6),Validators.maxLength(8)]]
+      // password: [  '', [
+      //   Validators.required,
+      //   Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}') ]  ]
     });
 
 

@@ -8,6 +8,7 @@ import { TokenStorageService } from '../services/token-storage.service';
 })
 export class DashboardComponent implements OnInit {
   token :any;
+  search : String ="";
 
   constructor( private tokenStorage: TokenStorageService) { }
 
