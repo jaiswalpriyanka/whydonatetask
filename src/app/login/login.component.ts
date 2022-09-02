@@ -48,11 +48,6 @@ export class LoginComponent implements OnInit {
           this.tokenStorage.saveToken(res.data.accessToken);
           alert(res.message);
           this.router.navigateByUrl('/dashbord')
-          // .then(() => {
-          //   window.location.reload();
-          //   });
-
-
         } else {
           alert(res?.message?res.message:'Unknown Error');
           console.log(res?.message?res.message:'Unknown Error');

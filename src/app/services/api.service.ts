@@ -112,6 +112,31 @@ export class ApiService {
       });
     }
 
+    getServicenew(url: string): Observable<any> {
+      var Atoken=localStorage.getItem('AuthToken');
+      var httpOptionss = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization':Atoken!,
+        })
+      };
+      return new Observable<any>((observer: Observer<any>) => {
+        this.http.get(url , httpOptionss ).subscribe(
+          res => {
+            observer.next(res);
+            observer.complete();
+          }, err => {
+            if(err.status == 401){
+              this.tokenS.signOutAdmin();
+              this.router.navigate(['login']);
+            }
+            observer.next(err.error);
+            observer.complete();
+          }
+        );
+      });
+    }
+
 
 
 }

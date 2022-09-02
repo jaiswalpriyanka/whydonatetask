@@ -16,7 +16,7 @@ app.use(function (req, res, next) {
 });
 const server = require('http').createServer(app);
 var corsOptions = {
-  origin: ["http://localhost:8081","http://localhost:4200"],
+  origin: ["http://localhost:8081","http://localhost:4200","http://www.omdbapi.com"],
   }
 const PORT = process.env.PORT || 3208;
 
