@@ -114,13 +114,21 @@ export class ApiService {
 
     getServicenew(url: string): Observable<any> {
       var Atoken=localStorage.getItem('AuthToken');
+//       header("Access-Control-Allow-Origin: *");
+// header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+// header("Access-Control-Allow-Headers: Authorization");
       var httpOptionss = {
         headers: new HttpHeaders({
-          'Content-Type': 'application/json',
-          'Authorization':Atoken!,
+          // 'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin':'`http://www.omdbapi.com',
+          // 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, DELETE',
+          // 'Authorization':Atoken!,
         })
       };
       return new Observable<any>((observer: Observer<any>) => {
+
+
+
         this.http.get(url , httpOptionss ).subscribe(
           res => {
             observer.next(res);
